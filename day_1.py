@@ -5,17 +5,21 @@
 file1 = open('day_1_input.txt', 'r')
 Lines = file1.readlines()
 
-prev_value = int(Lines.pop(0).strip())
 nb_increment = 0
-for line in Lines:
-    new_value = int(line.strip())
-    if (new_value > prev_value):
+for i in range(1, len(Lines)):
+    if int(Lines[i].strip()) > int(Lines[i-1].strip()):
         nb_increment += 1
-        print("{} is > {} -- nb increment : {}".format(new_value,
-              prev_value, nb_increment))
-
-    else:
-        print("{} is < {}".format(new_value, prev_value))
-    prev_value = new_value
+        # print("comparing value {} to {}".format(
+        #    int(Lines[i].strip()), int(Lines[i-1].strip())))
 
 print("nb increments : {}".format(nb_increment))
+
+nb_increment = 0
+for i in range(3, len(Lines)):
+    if int(Lines[i].strip()) > int(Lines[i-3].strip()):
+        nb_increment += 1
+        # print("comparing value {} to {}".format(
+        #    int(Lines[i].strip()), int(Lines[i-3].strip())))
+
+
+print("nb new increments : {}".format(nb_increment))
